@@ -35,7 +35,7 @@ export interface BatchManifest {
   createdAt: string;
 }
 
-const UPLOAD_DIR = path.resolve(process.cwd(), 'uploads');
+const UPLOAD_DIR = process.env.VERCEL ? path.resolve('/tmp', 'uploads') : path.resolve(process.cwd(), 'uploads');
 const DB_FILE = path.resolve(UPLOAD_DIR, 'metadata.json');
 
 if (!fs.existsSync(UPLOAD_DIR)) {
